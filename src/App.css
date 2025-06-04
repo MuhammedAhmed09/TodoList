@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Alexandria', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Alexandria Font */
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Black.ttf);
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Light.ttf);
+    font-weight: 300;
+}   
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-ExtraLight.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Alexandria';
+    src: url(/fonts/Alexandria-Thin.ttf);
+    font-weight: 100;
+}
+/* || Alexandria Font || */
+
+.task {
+    padding-block: 10px;
+    margin-bottom: 10px;
+}
+
+.task:hover {
+    padding-block: 20px;
+}
