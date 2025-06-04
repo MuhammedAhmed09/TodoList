@@ -47,7 +47,7 @@ const Todo = () => {
 
   return (
     
-    <Card sx={{minWidth: '600px', maxWidth: '500px', padding: '20px', textAlign: 'center'}}>
+    <Card sx={{padding: '20px', textAlign: 'center', width: '100%', maxWidth: '600px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)'}}>
       <CardContent>
         <Typography sx={{fontWeight: 800, fontSize: '60px'}}>
           التسكااات
