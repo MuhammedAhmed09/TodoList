@@ -72,3 +72,24 @@ body {
 .task:hover {
     padding-block: 20px;
 }
+
+.todoResponsive {
+    max-height: 100%;
+}
+
+.tasksResponsive {
+    max-height: 320px;
+}
+
+
+@media (max-width: 600px) {
+    .todoResponsive {
+        width: 100%;
+        padding: 0 10px; 
+        height: 100%;
+    }
+    .tasksResponsive {
+        max-height: 500px;
+    }
+}
+    
