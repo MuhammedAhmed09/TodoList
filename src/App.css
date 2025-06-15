@@ -77,10 +77,6 @@ body {
     max-height: 100%;
 }
 
-.tasksResponsive {
-    max-height: 320px;
-}
-
 
 @media (max-width: 600px) {
     .todoResponsive {
@@ -89,7 +85,7 @@ body {
         height: 100%;
     }
     .tasksResponsive {
-        max-height: 500px;
+        min-height: 160%;
     }
 }
     

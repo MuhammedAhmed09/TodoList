@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import Task from './Task';
-import { Button, Typography, Divider, ToggleButtonGroup, ToggleButton, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, } from '@mui/material'
+import { Button, Typography, Divider, ToggleButtonGroup, ToggleButton, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, Container, } from '@mui/material'
 import { v4 as uuidv4 } from 'uuid';
 import TodoContext from '../context/TodoContext';
 import SnackbarContext from '../context/SnackbarContext';
+import { Height } from '@mui/icons-material';
 
 const Todo = () => {
   const [inputValue, setInputValue] = React.useState(''); // State to hold tasks
@@ -191,7 +192,7 @@ const Todo = () => {
 
         {/* Task List will be rendered here */}
         <Grid sx={{marginBlock: '20px'}}>
-          {tasks.length > 0 ? <div className='tasksResponsive' style={{scrollBehavior: 'smoth', overflowY: 'auto'}}>{renderedTasks}</div> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
+          {tasks.length > 0 ? <Container style={{maxHeight: '50vh',scrollBehavior: 'smoth', overflowY: 'auto'}}>{renderedTasks}</Container> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
         </Grid>
 
         <Grid container spacing={1} >
