@@ -171,7 +171,7 @@ const Todo = () => {
     </Dialog>
     {/*==== OPEN EDIT DIALOG ====*/}
 
-    <Card className='todoResponsive' sx={{padding: '20px', textAlign: 'center', width: '100%', maxWidth: '600px', boxShadow: '0 2px 5px rgba(88, 88, 88, 0.63)'}}>
+    <Card className='todoResponsive' sx={{padding: '10px', textAlign: 'center', width: '100%', maxWidth: '600px', boxShadow: '0 2px 5px rgba(88, 88, 88, 0.63)'}}>
       <CardContent>
         <Typography sx={{fontWeight: 800, fontSize: '60px'}}>
           التسكااات
@@ -191,7 +191,7 @@ const Todo = () => {
         </ToggleButtonGroup> 
 
         {/* Task List will be rendered here */}
-        <Grid sx={{marginBlock: '20px'}}>
+        <Grid sx={{margin: '10px'}}>
           {tasks.length > 0 ? <Container style={{maxHeight: '50vh',scrollBehavior: 'smoth', overflowY: 'auto'}}>{renderedTasks}</Container> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
         </Grid>
 
