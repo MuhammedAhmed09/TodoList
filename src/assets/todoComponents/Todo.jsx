@@ -4,7 +4,6 @@ import { Button, Typography, Divider, ToggleButtonGroup, ToggleButton, Card, Car
 import { v4 as uuidv4 } from 'uuid';
 import TodoContext from '../context/TodoContext';
 import SnackbarContext from '../context/SnackbarContext';
-import { Height } from '@mui/icons-material';
 
 const Todo = () => {
   const [inputValue, setInputValue] = React.useState(''); // State to hold tasks
@@ -34,23 +33,19 @@ const Todo = () => {
 
   // Filter for non-completed tasks
   const nonCompletedTasks = useMemo(() => {
-    return tasks.filter((task) => {
-      return !task.completed
-    })
+    return Array.isArray(tasks) ? tasks.filter(task => !task.completed) : [];
   }, [tasks]);
 
   // Filter for completed tasks
   const completedTasks = useMemo(() => {
-    return tasks.filter((task) => {
-      return task.completed
-    })
-  }, [tasks]);
+    return Array.isArray(tasks) ? tasks.filter((task) => task.completed) : []
+  }, [tasks]); 
   
   // Function to handle toggle button changes
   let itemsToBeRender = tasks;
   if (alignment == 'nonCompleted') {
     itemsToBeRender = nonCompletedTasks;
-  }else if (alignment == 'compeleted') {
+  }else if (alignment == 'completed') {
     itemsToBeRender = completedTasks; 
   }else {
     itemsToBeRender = tasks; // Show all tasks
@@ -99,8 +94,13 @@ const Todo = () => {
   // { ==== OPEN EDIT DIALOG ==== }
 
     
-  const renderedTasks = itemsToBeRender.map((task) => (
-    <Task key={task.id} task={task} showDeleteDialog={showDeleteDialog} showOpenEditDialog={showOpenEditDialog}/>
+  const renderedTasks = itemsToBeRender?.map?.((task) => (
+    <Task
+      key={task.id}
+      task={task}
+      showDeleteDialog={showDeleteDialog}
+      showOpenEditDialog={showOpenEditDialog}
+    />
   ));
 
   return (
@@ -152,16 +152,18 @@ const Todo = () => {
           fullWidth
           variant="standard"
           value={editTask.title}
-          onChange={(e) => {
-              const updatedTasks = tasks.map((t) => {
-                  if (t.id === editTask.id) {
-                      return { ...t, title: editTask.title = e.target.value };
-                      ; // Update the title of the task
-                  }
-                  return t; 
-              });
-          setTasks(updatedTasks); 
-          localStorage.setItem('tasks', JSON.stringify(updatedTasks)); // Save updated tasks to local storage
+            onChange={(e) => {
+            const newTitle = e.target.value;
+            setEditTask((prev) => ({ ...prev, title: newTitle }));
+
+            const updatedTasks = tasks.map((t) => {
+              if (t.id === editTask.id) {
+                return { ...t, title: newTitle };
+              }
+              return t;
+            });
+            setTasks(updatedTasks);
+            localStorage.setItem('tasks', JSON.stringify(updatedTasks));
           }} 
         />
       </DialogContent>
@@ -186,21 +188,21 @@ const Todo = () => {
           aria-label="Platform"
         >
           <ToggleButton value="nonCompleted">غير المنجزة</ToggleButton>
-          <ToggleButton value="compeleted">المنجزة</ToggleButton>
+          <ToggleButton value="completed">المنجزة</ToggleButton>
           <ToggleButton value="all">كله</ToggleButton>
         </ToggleButtonGroup> 
 
         {/* Task List will be rendered here */}
-        <Grid sx={{margin: '10px'}}>
-          {tasks.length > 0 ? <Container style={{maxHeight: '50vh',scrollBehavior: 'smoth', overflowY: 'auto'}}>{renderedTasks}</Container> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
-        </Grid>
+        <Container sx={{margin: '20px 5px 0px 20px'}}>
+          {tasks.length > 0 ? <Container style={{maxHeight: '50vh',scrollBehavior: 'smooth', overflowY: 'auto'}}>{renderedTasks}</Container> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
+        </Container>
 
         <Grid container spacing={1} >
-          <Grid size={4}>
+          <Grid size={ 4 }>
             <Button onClick={handleClick} fullWidth size='large' variant="contained">زود</Button>
           </Grid>
-          <Grid size={8}>
-            <TextField value={inputValue} onChange={(e) => setInputValue(e.target.value)} fullWidth size='small' label=" التاسكاية" variant="outlined" />
+          <Grid size={ 8 }>
+            <TextField fullWidth value={inputValue} onChange={(e) => setInputValue(e.target.value)} size='small' label=" التاسكاية" variant="outlined" />
           </Grid>
         </Grid>
       </CardContent>

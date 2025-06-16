@@ -7,8 +7,9 @@ import { SnackbarContextProvider } from './assets/context/SnackbarContext';
 import { HandymanOutlined } from '@mui/icons-material';
 
 function App() {
-
-  const [themeMode, setThemeMode] = React.useState('light');
+  const [themeMode, setThemeMode] = React.useState(
+    localStorage.getItem('themeMode') || 'light'
+  );
   
   const darkTheme = createTheme({
       palette: {
@@ -31,13 +32,19 @@ function App() {
       },
   });
 
+  const changeThemeMode = () => {
+    const newMode = themeMode === 'light' ? 'dark' : 'light';
+    setThemeMode(newMode);
+    localStorage.setItem('themeMode', newMode);
+  }
+
   return (
       <ThemeProvider theme={darkTheme}>
         <Button
           variant="contained" 
           color="primary" 
           startIcon={<HandymanOutlined />} 
-          onClick={() => setThemeMode(themeMode === 'light' ? 'dark' : 'light')}
+          onClick={changeThemeMode}
           sx={{ position: 'absolute', top: 20, right: 20 }}
         >
           {themeMode === 'light' ? ' الغامق' : ' الفاتح'}
