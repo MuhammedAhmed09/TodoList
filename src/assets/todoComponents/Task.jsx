@@ -1,4 +1,4 @@
-import {  ButtonGroup, Card, Grid, IconButton, useTheme } from '@mui/material'
+import {  ButtonGroup, Card, CardContent, Container, Divider, Grid, IconButton, Stack, Typography, useTheme } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
@@ -33,10 +33,10 @@ const Task = ({ task, showDeleteDialog, showOpenEditDialog }) => {
 
     const theme = useTheme();
   return (
-    <Card className='task' sx={{ direction: 'rtl', transition: '0.2s', color: theme.palette.text.secondary, bgcolor: theme.palette.backgroundTask.default, marginBottom: '10px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)', ':hover': { boxShadow: '0 4px 10px rgba(0,0,0,0.2)' } }}>
+    <Card className='task' sx={{width: '100%', direction: 'rtl', transition: '0.2s', color: theme.palette.text.secondary, bgcolor: theme.palette.backgroundTask.default, marginBottom: '10px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)', ':hover': { boxShadow: '0 4px 10px rgba(0,0,0,0.2)' } }}>
         <Grid spacing={1} container pr={2} sx={{ alignItems: 'center'}}>
             <Grid size={7} sx={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                <h3>{task.title}</h3>
+                <Typography>{task.title}</Typography>
             </Grid>
             <Grid size={5}>
                 <ButtonGroup sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', justifyItems: 'self-end'}} variant="text" aria-label="text button group">

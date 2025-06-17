@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import Task from './Task';
-import { Button, Typography, Divider, ToggleButtonGroup, ToggleButton, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, Container, } from '@mui/material'
+import { Button, Typography, Divider, ToggleButtonGroup, ToggleButton, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, Container, Stack, } from '@mui/material'
 import { v4 as uuidv4 } from 'uuid';
 import TodoContext from '../context/TodoContext';
 import SnackbarContext from '../context/SnackbarContext';
@@ -186,6 +186,7 @@ const Todo = () => {
           exclusive
           onChange={(e) => setAlignment(e.target.value)}
           aria-label="Platform"
+          sx={{margin: '20px'}}
         >
           <ToggleButton value="nonCompleted">غير المنجزة</ToggleButton>
           <ToggleButton value="completed">المنجزة</ToggleButton>
@@ -193,11 +194,11 @@ const Todo = () => {
         </ToggleButtonGroup> 
 
         {/* Task List will be rendered here */}
-        <Container sx={{margin: '20px 5px 0px 20px'}}>
+        <Stack>
           {tasks.length > 0 ? <Container style={{maxHeight: '50vh',scrollBehavior: 'smooth', overflowY: 'auto'}}>{renderedTasks}</Container> : <Typography sx={{color: 'gray'}}>مفيش تسكاات ي زميللي</Typography>}
-        </Container>
+        </Stack>
 
-        <Grid container spacing={1} >
+        <Grid container spacing={1} sx={{marginTop: '20px'}}>
           <Grid size={ 4 }>
             <Button onClick={handleClick} fullWidth size='large' variant="contained">زود</Button>
           </Grid>
